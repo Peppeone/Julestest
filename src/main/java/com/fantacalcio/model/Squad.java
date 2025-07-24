@@ -1,30 +1,34 @@
 package com.fantacalcio.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import java.util.List;
 import lombok.Data;
-
-import java.io.Serializable;
 
 @Entity
 @Table(name = "squads")
 @Data
-@IdClass(Squad.SquadId.class)
 public class Squad {
-
     @Id
-    @ManyToOne
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "player_id")
-    private Player player;
-
-    private boolean isStarter;
-
-    public static class SquadId implements Serializable {
-        private Long team;
-        private Long player;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "squad_players",
+            joinColumns = @JoinColumn(name = "squad_id"),
+            inverseJoinColumns = @JoinColumn(name = "player_id")
+    )
+    private List<Player> players;
 }

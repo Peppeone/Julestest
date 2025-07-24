@@ -24,12 +24,12 @@ public class GameService {
     private SquadRepository squadRepository;
 
     public int calculateScore(Team team, int gameweek, Map<Long, Double> playerVotes) {
-        List<Squad> squad = squadRepository.findByTeamId(team.getId());
+        Squad squad = team.getSquad();
         double totalScore = 0;
 
-        for (Squad squadMember : squad) {
-            if (squadMember.isStarter()) {
-                totalScore += getPlayerScore(squadMember.getPlayer(), playerVotes);
+        if (squad != null) {
+            for (Player player : squad.getPlayers()) {
+                totalScore += getPlayerScore(player, playerVotes);
             }
         }
 

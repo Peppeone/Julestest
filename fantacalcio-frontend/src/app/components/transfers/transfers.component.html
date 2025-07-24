@@ -20,15 +20,15 @@
                     </button>
                 </div>
                 <div class="flex flex-col gap-2">
-                    <div class="flex items-center gap-4 bg-[#111922] dark:bg-gray-800 px-4 min-h-[72px] py-2 justify-between">
+                    <div *ngFor="let player of players" class="flex items-center gap-4 bg-[#111922] dark:bg-gray-800 px-4 min-h-[72px] py-2 justify-between">
                         <div class="flex items-center gap-4">
                             <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCCBRdORQgouUuT128ZFoBoa6wllGJLToiTlUyRhlQa59szW1KCPOhPiNFAEVFgfpCZrHWuTfg1LzOc4tQALo7MRKBF-Pd3Mk7mF8vt2LylIta6duqSS26Qf2k6ETWNerHHZoM9SHEn5ZfoattZs14U1JABz12n6gEoCYn1vrpay0nHiWmJq3YfeiLlDqeqLCbo-efc_bvOsuWhxzJdfPsyDx7hnx0Pe6swa8BF38cnfI6WH_HOW2S2Y1i1KW7x2JKqsfs1aLmWgo');"></div>
                             <div class="flex flex-col justify-center">
-                                <p class="text-white text-base font-medium leading-normal line-clamp-1">Ethan Carter</p>
-                                <p class="text-[#93acc8] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Goalkeeper</p>
+                                <p class="text-white text-base font-medium leading-normal line-clamp-1">{{ player.name }}</p>
+                                <p class="text-[#93acc8] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">{{ player.position }}</p>
                             </div>
                         </div>
-                        <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#1978e5] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4">
+                        <button (click)="addPlayer(player.id)" class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#1978e5] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4">
                             <span class="truncate">Add</span>
                         </button>
                     </div>

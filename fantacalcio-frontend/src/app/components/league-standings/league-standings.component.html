@@ -21,16 +21,16 @@
                 </a>
             </div>
         </div>
-        <div class="flex items-center gap-4 bg-[#111922] dark:bg-gray-800 px-4 min-h-[72px] py-2 justify-between">
+        <div *ngFor="let team of standings; let i = index" class="flex items-center gap-4 bg-[#111922] dark:bg-gray-800 px-4 min-h-[72px] py-2 justify-between">
             <div class="flex items-center gap-4">
                 <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnbu3bNhscgEh2HfxK4k76IcDnxji3RgYRdFpKWkIGP_xG9dvoMtd7Ep9aSWmXo9uezsSvHBxb-bgxxMfOQ2qyebIUIbEPWuXWrH2yIuwd6k8gsULTujc_W2UilzdB8O8mvSaH4677TemSdSz5Ck0KWtB2Jxs9MBXoWL7YLfSmfUpndu2RUHIalI31U6OJjWl1lzh0gIiFPFePeEDugDDhdRth0Lz0iWt6Y46Ddpxoa5FqN6Bas5mVTU97YwJbdF1elup3SxB1XtI');"></div>
                 <div class="flex flex-col justify-center">
-                    <p class="text-white text-base font-medium leading-normal line-clamp-1">1. Alex Turner</p>
-                    <p class="text-[#93acc8] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Team: The Gunners</p>
+                    <p class="text-white text-base font-medium leading-normal line-clamp-1">{{ i + 1 }}. {{ team.user.username }}</p>
+                    <p class="text-[#93acc8] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Team: {{ team.name }}</p>
                 </div>
             </div>
             <div class="shrink-0">
-                <p class="text-white text-base font-normal leading-normal">120 pts</p>
+                <p class="text-white text-base font-normal leading-normal">{{ team.points }} pts</p>
             </div>
         </div>
     </div>
