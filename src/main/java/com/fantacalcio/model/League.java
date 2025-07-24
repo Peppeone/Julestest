@@ -4,13 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
+import jakarta.persistence.OneToMany;
+import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "players")
-@Data
-public class Player {
+@Getter
+@Setter
+public class League {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +20,6 @@ public class Player {
 
     private String name;
 
-    private String position;
-
-    private Double price;
+    @OneToMany(mappedBy = "league")
+    private List<Team> teams;
 }
